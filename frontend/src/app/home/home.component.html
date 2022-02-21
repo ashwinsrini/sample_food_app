@@ -1,0 +1,32 @@
+<div class="title-content">
+    <h3 class="bold">
+        Our Menu
+    </h3>
+    <h1 class="bold">
+        Our Popular Dishes
+    </h1>
+    <p class="text-secondary">
+        Best cooks and best delivery guys all at your service.
+    </p>
+    <p class="text-secondary">
+        Hot tasty food will reach you in 60 minutes.
+    </p>
+</div>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let item of items; let i = index" class="col-4 mt-4">
+            <div class="card h-100">
+                <img src="{{item?.img}}" class="card-img-top" alt="{{item?.name}}">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        {{item?.name}}
+                        <mat-icon matTooltip="Add" (click)="addToCart(item)" class="addCart" aria-hidden="false"
+                            aria-label="Add to cart icon">add_shopping_cart</mat-icon>
+                    </h2>
+                    <p class="card-text text-muted">{{item?.description}}</p>
+                    <p class="card-text price">{{item?.price | currency:'USD'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

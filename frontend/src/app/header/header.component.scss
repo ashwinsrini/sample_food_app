@@ -1,0 +1,31 @@
+.header {
+    background-color: #fef4f3;
+}
+
+.active-route {
+    color: red;
+}
+
+.menu-items {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.register-btn {
+    color: red;
+}
+
+.login-btn {
+    color: white;
+    background-color: #f14245;
+    margin-left: 0.5%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.form-label, .invalid-feedback {
+    font-size: 16px !important;
+    font-weight: normal !important;
+}

@@ -1,0 +1,95 @@
+<mat-toolbar class="mat-elevation-z6 header">
+    <span class="bold">
+        Fudo.
+    </span>
+    <div class="menu-items">
+        <a mat-button routerLink="home" routerLinkActive="active-route">
+            Home
+        </a>
+        <a mat-button routerLink="review" routerLinkActive="active-route">
+            Review
+        </a>
+        <a mat-button routerLink="about" routerLinkActive="active-route">
+            About Us
+        </a>
+        <a mat-button routerLink="contact" routerLinkActive="active-route">
+            Contact Us
+        </a>
+    </div>
+    <mat-icon *ngIf="isLoggedIn" class="cart" aria-hidden="false" aria-label="Cart icon" matBadge="{{cartCount}}"
+        matBadgeColor="warn">shopping_cart</mat-icon>
+    <a *ngIf="!isLoggedIn" mat-raised-button class="register-btn" data-bs-toggle="modal"
+        data-bs-target="#registerModal">
+        Sign In
+    </a>
+    <a *ngIf="!isLoggedIn" mat-raised-button class="login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+        Sign Up
+    </a>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form #form="ngForm" (ngSubmit)="onRegister(form)">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group float-label">
+                            <label class="form-label" for="username">Username</label>
+                            <input autocomplete="off" type="text" class="form-control" id="username" required
+                                [(ngModel)]="model.username" name="username" #username="ngModel">
+                        </div>
+                        <div class="form-group float-label">
+                            <label class="form-label" for="password">Password</label>
+                            <input autocomplete="off" type="password" class="form-control" id="password" required
+                                [(ngModel)]="model.password" name="password" #password="ngModel">
+                            <div *ngIf="registerRes" class="invalid-feedback" style="display:block;">
+                                <div>{{registerRes}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button [disabled]="isNetworkRequested" type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group float-label">
+                            <label class="form-label" for="username">Username</label>
+                            <input autocomplete="off" type="text" class="form-control" id="username" required
+                                [(ngModel)]="loginModel.username" name="username" #username="ngModel">
+                        </div>
+                        <div class="form-group float-label">
+                            <label class="form-label" for="password">Password</label>
+                            <input autocomplete="off" type="password" class="form-control" id="password" required
+                                [(ngModel)]="loginModel.password" name="password" #password="ngModel">
+                            <div *ngIf="loginRes" class="invalid-feedback" style="display:block;">
+                                <div>{{loginRes}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button [disabled]="isNetworkRequested" type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</mat-toolbar>
