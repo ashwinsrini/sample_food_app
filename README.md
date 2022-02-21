@@ -5,7 +5,7 @@ Created with the following Angular & Node versions:
 - Node: 16.13.0
 - Package Manager: npm 6.14.15
 
-MongoDB is required, a database is created to store details of users while registering. Database is created at "mongodb://localhost:27017/sample_fudo"
+MongoDB is required, a database is created to store details of users while registering. Database is automatically created at "mongodb://localhost:27017/sample_fudo" upon successful user registration.
 
 Steps to run:
 - Use command "npm i" in 3 places -> root folder of the repository, frontend folder and backend folder.
